@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haaythein & Niar - Undangan</title><style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow-x:hidden;scroll-behavior:smooth;font-family:'Poppins',sans-serif;color:#fff}
+
+/* COVER (ASLI) */
+#cover{background:url('cover.jpg') center/cover no-repeat;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;animation:fadeIn 2s}
+h1{font-family:'Playfair Display',serif;font-size:2.4rem;margin-bottom:10px;text-shadow:0 2px 6px rgba(0,0,0,0.3)}
+.subtitle{letter-spacing:3px;margin-bottom:20px;color:#f0e6d2}
+.tamu{margin-bottom:35px;text-shadow:0 2px 5px rgba(0,0,0,0.4)}
+.btn{background:rgba(255,255,255,0.2);padding:12px 36px;border-radius:40px;border:1px solid rgba(255,255,255,0.5);cursor:pointer;backdrop-filter:blur(6px);transition:.3s}
+.btn:hover{background:rgba(255,255,255,0.4);transform:scale(1.05)}
+
+/* SECTION VIDEO */
+section{position:relative;width:100%;height:100vh;overflow:hidden}
+video.bg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
+
+/* MAP BUTTON (ASLI STYLE) */
+.maps-btn{position:absolute;bottom:140px;left:50%;transform:translateX(-50%);font-family:'Playfair Display',serif;font-size:24px;color:#fff;background:rgba(0,0,0,0.3);border:1.5px solid rgba(255,255,255,0.8);border-radius:30px;padding:8px 22px;text-decoration:none;backdrop-filter:blur(4px)}
+.maps-btn:hover{background:rgba(255,255,255,0.7);color:#111}
+
+/* GIFT DETAIL */
+.gift-container{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;width:90%;max-width:400px}
+.card{margin-bottom:30px}
+.bank{font-size:20px;font-weight:600}
+.owner{font-size:12px;opacity:.6;margin-bottom:10px}
+.number{font-size:20px;font-weight:600}
+button{margin-top:8px;padding:8px 16px;border-radius:20px;border:1px solid rgba(255,255,255,0.5);background:rgba(255,255,255,0.2);color:#fff;cursor:pointer;backdrop-filter:blur(8px)}
+button:hover{background:rgba(255,255,255,0.5);color:#000}
+.copied{display:none;color:#90EE90;font-size:12px;margin-top:5px}
+
+/* NOTIF */
+.notif{position:fixed;bottom:10%;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);padding:10px 20px;border-radius:10px;opacity:0;transition:.3s}
+
+/* RSVP DETAIL */
+.rsvp-container{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:90%;max-width:380px;background:rgba(255,255,255,0.08);padding:20px;border-radius:15px}
+.rsvp-container h2{font-family:'Playfair Display';margin-bottom:10px}
+.rsvp-container input,.rsvp-container select,.rsvp-container textarea{width:100%;padding:8px;margin:5px 0;border:none;border-radius:8px;background:rgba(255,255,255,0.2);color:#fff}
+.rsvp-comments{margin-top:10px;max-height:140px;overflow:auto}
+.comment{border-bottom:1px solid rgba(255,255,255,0.2);padding:5px 0}
+
+.hidden{display:none}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+</style></head><body><!-- COVER --><div id="cover">
+  <div class="subtitle">WEDDING INVITATION</div>
+  <h1>Haaythein & Niar</h1>
+  <div class="tamu" id="namaTamu">Kepada Yth.</div>
+  <button id="bukaBtn" class="btn">Buka Undangan</button>
+</div><!-- ISI FULL DETAIL --><div id="isi" class="hidden"><section><video src="pengantin.mp4" autoplay muted loop playsinline class="bg"></video></section><section>
+<video src="lokasi.mp4" autoplay muted loop playsinline class="bg"></video>
+<a href="https://maps.app.goo.gl/ya31ZLyKFNwCD7BL9" target="_blank" class="maps-btn">Maps lokasi</a>
+</section><section><video src="gallery.mp4" autoplay muted loop playsinline class="bg"></video></section>
+<section><video src="story.mp4" autoplay muted loop playsinline class="bg"></video></section><section>
+<video src="gift.mp4" autoplay muted loop playsinline class="bg"></video>
+<div class="gift-container">
+<h2>Wedding Gift</h2>
+<div class="card">
+<div class="bank">BCA</div>
+<div class="owner">A/N Haaythein & Niar</div>
+<div class="number" id="rek1">1234567890</div>
+<button onclick="copyText('rek1')">Salin</button>
+<div class="copied" id="notif1">✔ Berhasil Disalin</div>
+</div>
+<div class="card">
+<div class="bank">MANDIRI</div>
+<div class="owner">A/N Haaythein & Niar</div>
+<div class="number" id="rek2">9876543210</div>
+<button onclick="copyText('rek2')">Salin</button>
+<div class="copied" id="notif2">✔ Berhasil Disalin</div>
+</div>
+</div>
+</section><section>
+<video src="rsvp.mp4" autoplay muted loop playsinline class="bg"></video>
+<div class="rsvp-container">
+<h2>RSVP & Ucapan 💌</h2>
+<form id="rsvpForm">
+<input type="text" id="nama" placeholder="Nama" required>
+<select id="kehadiran" required>
+<option value="">Pilih</option>
+<option>Hadir</option>
+<option>Tidak Hadir</option>
+</select>
+<textarea id="pesan" placeholder="Ucapan"></textarea>
+<button type="submit">Kirim</button>
+</form>
+<div class="rsvp-comments" id="rsvpComments"></div>
+</div>
+</section><section><video src="penutup.mp4" autoplay muted loop playsinline class="bg"></video></section></div><audio id="musik" src="musik.mp3" loop></audio>
+
+<script>
+// nama tamu
+const params=new URLSearchParams(window.location.search);
+const nama=params.get("nama");
+if(nama){document.getElementById("namaTamu").textContent="Kepada Yth. "+decodeURIComponent(nama)}
+
+// buka + musik (FIX NO DELAY)
+document.getElementById("bukaBtn").onclick=function(){
+ document.getElementById("musik").play().catch(()=>{});
+ document.getElementById("cover").style.display="none";
+ document.getElementById("isi").classList.remove("hidden");
+}
+
+// copy rekening + notif
+function copyText(id){
+ navigator.clipboard.writeText(document.getElementById(id).innerText);
+ let notif=document.getElementById("notif"+id.slice(-1));
+ notif.style.display="block";
+ setTimeout(()=>notif.style.display="none",1500);
+}
+
+// RSVP
+const form=document.getElementById("rsvpForm");
+form.addEventListener("submit",function(e){
+ e.preventDefault();
+ const nama=document.getElementById("nama").value;
+ const hadir=document.getElementById("kehadiran").value;
+ const pesan=document.getElementById("pesan").value;
+ const div=document.createElement("div");
+ div.classList.add("comment");
+ div.innerHTML=`<strong>${nama}</strong> (${hadir})<br>${pesan}`;
+ document.getElementById("rsvpComments").prepend(div);
+ form.reset();
+});
+</script></body>
+</html>
